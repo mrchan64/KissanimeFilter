@@ -6,9 +6,11 @@ var express = require('express'),
 var app = express();
 app.use(cookieParser());
 
+const THIS_DOM = "localhost:3000";
+
 app.get('*', (req, res)=>{
   //res.sendFile(__dirname+'/index.html');
-  basicallyProxy(req).pipe(res);
+  basicallyProxy(req, res);
 })
 
 app.post('*', (req, res)=>{
@@ -19,19 +21,21 @@ app.post('*', (req, res)=>{
 var server = http.createServer(app);
 server.listen(process.env.PORT || 3000);
 
-var basicallyProxy = function(req){
+var basicallyProxy = function(req, newres){
   //var path = req.url.substring(6);
   var path = addqueries(req);
   console.log(' * Processing request to kissanime.ru with path "'+path+'"');
   var newHeaders = req.headers;
   newHeaders.path = path;
   newHeaders.host = 'kissanime.ru';
+  if(newHeaders.referer)newHeaders.referer = newHeaders.referer.replace(THIS_DOM, "kissanime.ru"); 
   var interm = new stream.PassThrough();
   var options = {
     'hostname': newHeaders.host,
     'path': path,
     'headers': newHeaders
   }
+  //console.log(options)
   var req = http.get(options, (res)=>{
     var total = "";
     res.on('data', (chunk)=>{
@@ -39,12 +43,16 @@ var basicallyProxy = function(req){
     });
     res.on('end', ()=>{
       console.log(' * -> Finished retrieving request.')
+      copyresheader(res, newres);
       interm.write(total);
+      if(res.statusCode == 302){
+        console.log(total)
+      }
       interm.end();
     });
   });
   req.end();
-  return interm;
+  interm.pipe(newres);
 }
 
 var addqueries = function(req){
@@ -57,4 +65,14 @@ var addqueries = function(req){
     count++;
   })
   return path;
+}
+
+var copyresheader = function(oldres, newres){
+  var headers = oldres.headers;
+  var cookiedom = ".kissanime.ru";
+  headers['set-cookie'].forEach((cookie, index)=>{
+    headers['set-cookie'][index] = cookie.replace(cookiedom, THIS_DOM);
+  })
+  if(headers.location)headers.location = headers.location.replace("kissanime.ru", THIS_DOM);
+  newres.writeHead(oldres.statusCode, headers);
 }
