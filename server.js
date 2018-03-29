@@ -8,6 +8,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded());
 
+app.get('/style/replace.css', (req, res)=>{
+  console.log(' [*] Processing request for /style/replace.css');
+  res.sendFile(__dirname+'/style.css')
+})
+
 app.get('*', (req, res)=>{
   //res.sendFile(__dirname+'/index.html');
   MPX.getProxy(req, res);
