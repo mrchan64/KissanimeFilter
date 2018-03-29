@@ -5,6 +5,8 @@ var express = require('express'),
 
 var app = express();
 app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.get('*', (req, res)=>{
   //res.sendFile(__dirname+'/index.html');
@@ -12,8 +14,7 @@ app.get('*', (req, res)=>{
 })
 
 app.post('*', (req, res)=>{
-  console.log('A post was requested')
-  res.end();
+  MPX.postProxy(req, res);
 })
 
 var server = http.createServer(app);
