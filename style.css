@@ -67,3 +67,51 @@ body {
   color: #ffcc00;
   text-decoration: underline;
 }
+
+/* for episode page */
+
+#homecontainer {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 4%;
+  width: 90%;
+  text-align: left;
+}
+
+#backtohome {
+  position: relative;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+}
+#backtohome:hover {
+  background-color: #000000;
+}
+
+#episodeContainer {
+  margin-top: 10px;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+#episodeContainer>a {
+  text-decoration: none;
+  background-color: #ffcc00;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 7px;
+  margin-top: 10px;
+  margin-right: 10px;
+  height: auto;
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid #ffcc00;
+  display: none;
+  opacity: 0;
+}
+#episodeContainer>a:hover {
+  background-color: rgba(0,0,0,0);
+  color: #ffcc00;
+}

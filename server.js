@@ -13,6 +13,11 @@ app.get('/style/replace.css', (req, res)=>{
   res.sendFile(__dirname+'/style.css')
 })
 
+app.get('/js/fadein.js', (req, res)=>{
+  console.log(' [*] Processing request for /js/fadein.js');
+  res.sendFile(__dirname+'/episodeFadeIn.js')
+})
+
 app.get('*', (req, res)=>{
   //res.sendFile(__dirname+'/index.html');
   MPX.getProxy(req, res);
