@@ -18,6 +18,11 @@ app.get('/js/fadein.js', (req, res)=>{
   res.sendFile(__dirname+'/episodeFadeIn.js')
 })
 
+app.get('/js/runvid.js', (req, res)=>{
+  console.log(' [*] Processing request for /js/runvid.js');
+  res.sendFile(__dirname+'/rippedvidsetup.js')
+})
+
 app.get('*', (req, res)=>{
   //res.sendFile(__dirname+'/index.html');
   MPX.getProxy(req, res);
