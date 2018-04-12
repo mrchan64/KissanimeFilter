@@ -10,6 +10,10 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 /* for search page*/
 
 #imgSearch {
@@ -99,7 +103,7 @@ body {
 #episodeContainer>a {
   text-decoration: none;
   background-color: #ffcc00;
-  color: #ffffff;
+  color: #222222;
   font-size: 15px;
   padding: 7px;
   margin-top: 10px;
@@ -114,4 +118,138 @@ body {
 #episodeContainer>a:hover {
   background-color: rgba(0,0,0,0);
   color: #ffcc00;
+}
+
+/* for captcha page */
+
+.imgCapSelect {
+  border: 5px solid #ffcc00;
+}
+
+#formVerify {
+  width: 100%;
+  text-align: center;
+  color: #cccccc;
+}
+
+#formVerify>div{
+  display: block !important;
+}
+
+#formVerify p span {
+  color: #ffcc00 !important;
+}
+
+/* for video page */
+
+#navsubbar>p{
+  width: auto;
+  margin-left: 4%;
+  display: inline-block;
+}
+
+#navsubbar>p>a{
+  position: relative;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+}
+#navsubbar>p>a:hover{
+  background-color: #000000;
+}
+
+#eplist{
+  float: right;
+  margin-right: 4%;
+  margin-top: 20px;
+}
+
+.navbar{
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.navButton{
+  text-align: center;
+  position: relative;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+  width: 20%;
+  box-sizing: border-box;
+  display: inline-block;
+  cursor: pointer;
+}
+.navButton:hover{
+  background-color: #ffcc00;
+  color: #222222;
+}
+
+#selectEpisode{
+  position: relative;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+  width: 20%;
+  box-sizing: border-box;
+  margin-left: 4%;
+  margin-right: 4%;
+  background-color: #222222;
+  cursor: pointer;
+}
+#selectEpisode:hover{
+  background-color: #000000;
+}
+
+#selectEpisode>option{
+  background-color: #bbbbbb;
+  color: #222222;
+  font-size: 18px;
+}
+
+#previous{
+  border-top-left-radius: 1000px;
+  border-bottom-left-radius: 1000px;
+  margin-left: 4%;
+}
+
+#next{
+  border-top-right-radius: 1000px;
+  border-bottom-right-radius: 1000px;
+  margin-right: 4%;
+}
+
+#centerDivVideo{
+  position: relative;
+  margin: 20px 4%;
+  width: 92%;
+  padding-bottom: 40%;
+  height: 0;
+  border: 2px solid #ffcc00;
+}
+
+#slcQualix{
+  position: relative;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+  width: 20%;
+  box-sizing: border-box;
+  margin-right: 4%;
+  background-color: #222222;
+  cursor: pointer;
+}
+
+#my_video_1{
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
 }
